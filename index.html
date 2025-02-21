@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <title>Videorecording web</title>
+  </head>
+  <body>
+    <div
+      class="fixed bottom-0 w-full p-4 bg-gray-800 flex justify-center space-x-4"
+    >
+      <button
+        type="button"
+        id="buttonStop"
+        disabled
+        class="bg-red-500 text-white font-bold py-2 px-4 rounded opacity-50 cursor-not-allowed w-full"
+      >
+        Stop
+      </button>
+      <button
+        type="button"
+        id="buttonStart"
+        class="bg-green-500 text-white font-bold py-2 px-4 rounded w-full"
+      >
+        Start
+      </button>
+    </div>
+    <div>
+      <video autoplay muted playsinline id="videoLive"></video>
+    </div>
+    <div>
+      <video controls playsinline id="videoRecorded"></video>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
