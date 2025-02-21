@@ -10,6 +10,7 @@ async function main() {
   const videoContainer = document.querySelector("#videoContainer");
   const playbackContainer = document.querySelector("#playbackContainer");
   const recordingStatus = document.querySelector("#recordingStatus");
+  const buttonRestart = document.querySelector("#buttonRestart");
 
   let startTime;
   let stopwatchInterval;
@@ -69,12 +70,33 @@ async function main() {
       
       // Show recorded video
       playbackContainer.classList.remove("hidden");
+      
+      // Mirror the video when rewinding
+      videoRecorded.classList.add("mirror");
+      
+      // Show the restart button
+      buttonRestart.classList.remove("hidden");
     }, 1500); // Give user time to read the completion message
     
     // Update button states
     buttonStop.setAttribute("disabled", "");
     buttonStop.classList.add("opacity-50", "cursor-not-allowed");
     buttonStart.classList.remove("hidden");
+  });
+
+  // Add event listener for the restart button
+  buttonRestart.addEventListener("click", () => {
+    // Reset the application state
+    videoRecorded.classList.remove("mirror");
+    playbackContainer.classList.add("hidden");
+    videoContainer.classList.remove("hidden");
+    recordingIndicator.classList.add("hidden");
+    buttonRestart.classList.add("hidden");
+    buttonStart.classList.remove("hidden");
+    buttonStop.setAttribute("disabled", "");
+    buttonStop.classList.add("opacity-50", "cursor-not-allowed");
+    recordingStatus.textContent = "Press Start to begin recording";
+    stopwatch.textContent = "00:00";
   });
 
   // Show initial status
