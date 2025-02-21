@@ -4,7 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <title>Videorecording web</title>
+    <title>Video Recorder</title>
+
+    <!-- PWA related tags -->
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#EF4444">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Video Recorder">
+    <link rel="apple-touch-icon" href="favicon192.jpg">
+    <link rel="icon" href="favicon192.jpg">
+    
+    <!-- Add service worker registration -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('sw.js')
+            .then(registration => {
+              console.log('ServiceWorker registration successful');
+            })
+            .catch(err => {
+              console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+      }
+    </script>
   </head>
   <body>
     <div id="recordingIndicator" class="hidden fixed top-0 w-full p-4 bg-red-500 text-white flex flex-col items-center">
