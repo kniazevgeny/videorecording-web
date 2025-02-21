@@ -7,6 +7,27 @@
     <title>Videorecording web</title>
   </head>
   <body>
+    <div id="recordingIndicator" class="hidden fixed top-0 w-full p-4 bg-red-500 text-white flex flex-col items-center">
+      <div class="flex items-center space-x-4">
+        <div class="flex items-center">
+          <div class="w-3 h-3 bg-white rounded-full animate-pulse mr-2"></div>
+          <span>Recording</span>
+        </div>
+        <div id="stopwatch">00:00</div>
+      </div>
+      <div id="recordingStatus" class="mt-2 text-sm font-medium">
+        Press Start to begin recording
+      </div>
+    </div>
+
+    <div id="videoContainer">
+      <video autoplay muted playsinline id="videoLive" class="w-full h-screen object-cover"></video>
+    </div>
+    
+    <div id="playbackContainer" class="hidden">
+      <video controls playsinline id="videoRecorded" class="w-full h-screen object-contain"></video>
+    </div>
+
     <div
       class="fixed bottom-0 w-full p-4 bg-gray-800 flex justify-center space-x-4"
     >
@@ -25,12 +46,6 @@
       >
         Start
       </button>
-    </div>
-    <div>
-      <video autoplay muted playsinline id="videoLive"></video>
-    </div>
-    <div>
-      <video controls playsinline id="videoRecorded"></video>
     </div>
     <script src="main.js"></script>
   </body>
