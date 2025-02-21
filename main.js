@@ -21,7 +21,11 @@ async function main() {
     const elapsed = Date.now() - startTime;
     const seconds = Math.floor(elapsed / 1000);
     const minutes = Math.floor(seconds / 60);
-    const formattedTime = `${minutes.toString().padStart(2, '0')}:${(seconds % 60).toString().padStart(2, '0')}`;
+    const formattedTime = `${minutes.toString().padStart(2, "0")}:${(
+      seconds % 60
+    )
+      .toString()
+      .padStart(2, "0")}`;
     stopwatch.textContent = formattedTime;
   }
 
@@ -47,14 +51,17 @@ async function main() {
     mediaRecorder.start();
     startTime = Date.now();
     stopwatchInterval = setInterval(updateStopwatch, 1000);
-    
+
     // Change theme color to red
-    themeColorMeta.setAttribute('content', '#ff0000');
-    
+    themeColorMeta.setAttribute("content", "#ff0000");
+
     // Show recording indicator and update status
-    recordingIndicator.classList.remove("hidden");
-    recordingStatus.textContent = "Recording in progress... Press Stop when finished";
-    
+    recordingIndicator
+      .querySelector(".recordingIndicator__on")
+      .classList.remove("hidden");
+    recordingStatus.textContent =
+      "Recording in progress... Press Stop when finished";
+
     // Update button states
     buttonStart.classList.add("hidden");
     buttonStop.removeAttribute("disabled");
@@ -64,28 +71,31 @@ async function main() {
   buttonStop.addEventListener("click", () => {
     mediaRecorder.stop();
     clearInterval(stopwatchInterval);
-    
+
     // Reset theme color to original
-    themeColorMeta.setAttribute('content', '#000000');
-    
+    themeColorMeta.setAttribute("content", "#000000");
+
     // Update status text
-    recordingStatus.textContent = "Recording complete - Video ready for playback";
-    
+    recordingStatus.textContent =
+      "Recording complete - Video ready for playback";
+
     // Hide recording indicator and live video
     setTimeout(() => {
-      recordingIndicator.classList.add("hidden");
+      recordingIndicator
+        .querySelector(".recordingIndicator__on")
+        .classList.add("hidden");
       videoContainer.classList.add("hidden");
-      
+
       // Show recorded video
       playbackContainer.classList.remove("hidden");
-      
+
       // Mirror the video when rewinding
       videoRecorded.classList.add("mirror");
-      
+
       // Show the restart button
       buttonRestart.classList.remove("hidden");
     }, 1500); // Give user time to read the completion message
-    
+
     // Update button states
     buttonStop.setAttribute("disabled", "");
     buttonStop.classList.add("opacity-50", "cursor-not-allowed");
