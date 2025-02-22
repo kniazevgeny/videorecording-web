@@ -46,8 +46,8 @@ async function main() {
   const mediaRecorder = new MediaRecorder(stream, {
     // <3>
     mimeType: "video/webm",
-    videoBitsPerSecond: 5000000,
-    audioBitsPerSecond: 128000,
+    videoBitsPerSecond: 3000000,
+    audioBitsPerSecond: 192000,
   });
   console.log(mediaRecorder);
 
