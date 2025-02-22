@@ -32,7 +32,11 @@ async function main() {
   const stream = await navigator.mediaDevices.getUserMedia({
     // <1>
     video: true,
-    audio: true,
+    audio: {
+      noiseSuppression: false,
+      echoCancellation: false,
+      autoGainControl: false,
+    },
   });
   console.log(stream);
 
