@@ -34,6 +34,7 @@ async function main() {
     video: true,
     audio: true,
   });
+  console.log(stream)
 
   videoLive.srcObject = stream;
 
@@ -46,9 +47,11 @@ async function main() {
     // <3>
     mimeType: "video/webm",
   });
+  console.log(mediaRecorder)
 
   buttonStart.addEventListener("click", () => {
     mediaRecorder.start();
+    // mediaRecorder.videoBitsPerSecondstart();
     startTime = Date.now();
     stopwatchInterval = setInterval(updateStopwatch, 1000);
 
@@ -122,6 +125,7 @@ async function main() {
   recordingStatus.textContent = "Press Start to begin recording";
 
   mediaRecorder.addEventListener("dataavailable", (event) => {
+    console.log(event)
     videoRecorded.src = URL.createObjectURL(event.data); // <6>
   });
 }
