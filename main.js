@@ -38,14 +38,14 @@ async function main() {
 
   videoLive.srcObject = stream;
 
-  if (!MediaRecorder.isTypeSupported("video/mp4")) {
+  if (!MediaRecorder.isTypeSupported("video/webm")) {
     // <2>
-    console.warn("video/mp4 is not supported");
+    console.warn("video/webm is not supported");
   }
 
   const mediaRecorder = new MediaRecorder(stream, {
     // <3>
-    mimeType: "video/mp4",
+    mimeType: "video/webm",
     videoBitsPerSecond: 3000000,
     audioBitsPerSecond: 192000,
   });
