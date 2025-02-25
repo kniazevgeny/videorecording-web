@@ -45,6 +45,7 @@ async function main() {
   if (!MediaRecorder.isTypeSupported("video/webm")) {
     // <2>
     console.warn("video/webm is not supported");
+    alert("video/webm is not supported");
   }
 
   const mediaRecorder = new MediaRecorder(stream, {
